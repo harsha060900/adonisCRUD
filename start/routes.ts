@@ -20,7 +20,7 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async () => {  
+Route.get('/', async () => {
   return { hello: 'world' }
 })
 // Route.get('/disp', 'DetailsController.disp').middleware('auth')
@@ -28,6 +28,14 @@ Route.get('/disp/:id?', 'DetailsController.disp').middleware('auth')
 Route.post('/create', 'DetailsController.ins').middleware('auth')
 Route.put('/update', 'DetailsController.updt').middleware('auth')
 Route.delete('/delete/:id', 'DetailsController.del').middleware('auth')
+
+// CUSTOMER
+Route.group(() => {
+  Route.get('/:id?', 'EmployeesController.displayData')
+  Route.post('/', 'EmployeesController.store')
+  Route.put('/:id', 'EmployeesController.updt')
+  Route.delete('/:id', 'EmployeesController.delete')
+}).prefix('/employee').where('id', /^[0-9]+$/).middleware('auth')
 
 Route.get('/add', 'ArithOP.add').middleware('auth')
 Route.get('/sub', 'ArithOP.sub')

@@ -8,7 +8,7 @@ export default class updateValid extends CustomMessages {
   }
 
   public schema = schema.create({
-    name: schema.string(),
+    c_name: schema.string(),
     updt: schema.string(),
   })
 

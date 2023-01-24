@@ -11,10 +11,10 @@ export default class Validate {
     // }
     //   console.log('Not number');
     //   return 'enter a number'
-    const appKey: string = Env.get('APP_KEY')
-    const appkey = request.headers('appkey')
-    console.log(typeof appkey.appkey, typeof appKey)
-    if (appKey === appkey.appkey) await next()
-       else return response.send("Authentication Error !!")
+    const envAppKey: string = Env.get('APP_KEY')
+    const appKey = request.headers()
+    // console.log(appKey)
+    if (envAppKey === appKey.appkey) await next()
+    // else return response.send('Authentication Error !!')
   }
 }
